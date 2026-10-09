@@ -1,5 +1,22 @@
 # go-localdaemon
 
+## Maintenance moved to `github.com/hollis-labs/libs/util`
+
+This standalone repository is retired. Maintained source and documentation are
+in [github.com/hollis-labs/libs/util/localdaemon](https://github.com/hollis-labs/libs/tree/util%2Fv0.1.0/util/localdaemon), released in **`util/v0.1.0`**.
+Install the replacement module:
+
+```sh
+go get github.com/hollis-labs/libs/util@v0.1.0
+```
+
+Replace the `github.com/hollis-labs/go-localdaemon` import prefix with
+`github.com/hollis-labs/libs/util/localdaemon`, retaining the package subpath. Review the replacement documentation
+for any API changes before migrating. Existing standalone tags and history remain
+available; old module pins do not automatically redirect to the new module.
+
+The documentation below describes historical standalone usage.
+
 Local background-daemon lifecycle primitives: atomic PID file, flock single-instance lock, process-identity check, detached spawn, stop with escalation, poll-until-ready.
 
 For a process that manages its own local daemon: the small OS-level pieces that Cerberus, Tether and Nanite each rebuilt by hand, in one place with tests. Six primitives (`PIDFile`, `Lock`/`TryAcquire`, `VerifyCommand`, `Spawn`, `Stop`, `WaitReady`) plus one optional, isolated `Listener` helper. Standard library only.
